@@ -74,15 +74,18 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
       </div>
 
       <div className="flex items-center">
-        <button className="border border-red-500 text-red-500 px-5 py-2 rounded-full hover:bg-red-500 hover:text-black transition duration-200">
-          Logout
-        </button>
-        <Link
-          href="/login"
-          className="border border-teal-500 text-teal-500 px-5 py-2 rounded-full hover:bg-teal-500 hover:text-black transition duration-200"
-        >
-          Login
-        </Link>
+        {session?.user ? (
+          <button className="border border-red-500 text-red-500 px-5 py-2 rounded-full hover:bg-red-500 hover:text-black transition duration-200">
+            Logout
+          </button>
+        ) : (
+          <Link
+            href="/login"
+            className="border border-teal-500 text-teal-500 px-5 py-2 rounded-full hover:bg-teal-500 hover:text-black transition duration-200"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
