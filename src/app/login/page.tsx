@@ -25,8 +25,9 @@ const LoginPage = () => {
     try {
       const res = await loginUser(data); // Call the loginUser function with the form data
       console.log(res); // Log the response to the console
-      if (res.success) {
-        alert(res.message); // Show success message
+      if (res.accessToken) {
+        alert(res.message);
+        localStorage.setItem('accessToken', res.accessToken); // Store the access token in local storage
         router.push('/'); // Redirect to the home page
       }
     } catch (err: any) {
