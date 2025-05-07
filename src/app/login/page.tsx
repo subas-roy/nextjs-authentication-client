@@ -1,4 +1,5 @@
 'use client';
+import { loginUser } from '@/utils/actions/loginUser';
 import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,7 +18,18 @@ const LoginPage = () => {
   } = useForm<FormValues>();
 
   const onSubmit = async (data: FormValues) => {
-    console.log(data); // log the form data
+    // console.log(data); // log the form data
+    try {
+      const res = await loginUser(data); // Call the loginUser function with the form data
+      console.log(res); // Log the response to the console
+      if (res.success) {
+        alert(res.message); // Show success message
+        // router.push('/'); // Redirect to the home page
+      }
+    } catch (err: any) {
+      console.error(err.message);
+      throw new Error(err.message);
+    }
   };
 
   return (
