@@ -4,6 +4,7 @@
 import { registerUser } from '@/utils/actions/registerUser';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 export type UserData = {
@@ -19,12 +20,17 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm<UserData>();
 
+  const router = useRouter(); // Initialize the router
+
   const onSubmit = async (data: UserData) => {
     // console.log(data); // Log the data to the console
 
     try {
       const res = await registerUser(data); // Call the registerUser function with the form data
-      console.log(res); // Log the response to the console
+      if (res.success) {
+        alert(res.message); // Show success message
+        router.push('/login'); // Redirect to the login page
+      }
     } catch (err: any) {
       console.error(err.message);
       throw new Error(err.message);
