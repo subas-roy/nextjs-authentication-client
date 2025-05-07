@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 
 export type UserData = {
   username: string;
@@ -19,7 +19,7 @@ const RegisterPage = () => {
   } = useForm<UserData>();
 
   const onSubmit = async (data: UserData) => {
-    console.log(data);
+    console.log(data); // Log the data to the console
 
     try {
     } catch (err: any) {
@@ -52,7 +52,7 @@ const RegisterPage = () => {
               </label>
               <input
                 type="text"
-                {...register("username")}
+                {...register('username')}
                 placeholder="User Name"
                 className="w-full p-3 border border-gray-300 rounded "
                 required
@@ -65,7 +65,7 @@ const RegisterPage = () => {
               </label>
               <input
                 type="email"
-                {...register("email")}
+                {...register('email')}
                 placeholder="Email"
                 className="w-full p-3 border border-gray-300 rounded "
                 required
@@ -77,7 +77,7 @@ const RegisterPage = () => {
                 Password
               </label>
               <input
-                {...register("password")}
+                {...register('password')}
                 type="password"
                 placeholder="Password"
                 className="w-full p-3 border border-gray-300 rounded "
@@ -95,7 +95,7 @@ const RegisterPage = () => {
             </div>
 
             <p className="text-center text-gray-600">
-              Already have an account?{" "}
+              Already have an account?{' '}
               <Link className="text-teal-500 hover:underline" href="/login">
                 Login
               </Link>
