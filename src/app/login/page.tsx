@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import { loginUser } from '@/utils/actions/loginUser';
 import { signIn } from 'next-auth/react';
@@ -15,7 +16,7 @@ const LoginPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {},
   } = useForm<FormValues>();
 
   const router = useRouter();
@@ -115,7 +116,8 @@ const LoginPage = () => {
               className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full shadow-md hover:bg-gray-200"
               onClick={() =>
                 signIn('google', {
-                  callbackUrl: 'http://localhost:3000/dashboard',
+                  callbackUrl:
+                    'https://nextjs-authentication-sandy.vercel.app/dashboard',
                 })
               }
             >
@@ -130,7 +132,8 @@ const LoginPage = () => {
               className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full shadow-md hover:bg-gray-200"
               onClick={() =>
                 signIn('github', {
-                  callbackUrl: 'http://localhost:3000/dashboard',
+                  callbackUrl:
+                    'https://nextjs-authentication-sandy.vercel.app/dashboard',
                 })
               }
             >
